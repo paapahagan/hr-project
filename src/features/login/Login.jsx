@@ -1,30 +1,31 @@
-import React, { useState } from "react";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+
+const schema = yup.object().shape({
+  email: yup.string().email().required(),
+  password: yup.string().min(8).max(32).required(),
+});
 
 // login component
 function Login() {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [error, setError] = useState(null);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
-  function isValidEmail(email) {
-    return /\S+@\S+\.\S+/.test(email);
-  }
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    alert("Submitted");
-
-    if (isValidEmail(email)) {
-      console.log("email is valid");
-    } else {
-      setError("email is invalid");
-    }
+  const onSubmitHandler = (data) => {
+    console.log({ data });
+    reset();
   };
 
   return (
     <form
-      onSubmit={handleSubmit}
+      onSubmit={handleSubmit(onSubmitHandler)}
       className="grid content-center min-h-screen px-10 py-10 bg-orange-50 lg:grid justify-items-center"
     >
       <div className="container bg-white shadow-md rounded-2xl grid justify-items-center p-10 md:w-3/4  lg:max-w-xl ">
@@ -37,28 +38,27 @@ function Login() {
           <div className=" grid ">
             <label>Email</label>
             <input
-              value={email}
+              {...register("email")}
               type="text"
-              className="border border-slate-400 focus:ring focus:ring-orange-500 focus:outline-none rounded-lg px-5 lg: py-2"
-              onChange={(e) => setEmail(e.target.value)}
               required
+              className="border border-slate-400 focus:ring focus:ring-orange-500 focus:outline-none rounded-lg px-5 lg: py-2"
             />
-            {error && <h2 style={{ color: "red" }}>{error}</h2>}
+            <p>{errors.email?.message}</p>
           </div>
           <div className="grid mt-5 lg:mt-10 ">
             <label>Password</label>
             <input
-              value={password}
+              {...register("password")}
               type="password"
-              className="border border-slate-400 focus:ring focus:ring-orange-500 focus:outline-none rounded-lg px-5  lg: py-2"
-              onChange={(e) => setPassword(e.target.value)}
               required
+              className="border border-slate-400 focus:ring focus:ring-orange-500 focus:outline-none rounded-lg px-5  lg: py-2"
             />
+            <p>{errors.password?.message}</p>
           </div>
           <div className=" grid gap-y-5 mt-10 lg:mt-16 ">
             <button
               type="submit"
-              disabled={!email}
+              // disabled={!email}
               className=" bg-orange-500 text-white hover:bg-orange-400 px-20 py-4 rounded-lg lg:"
             >
               Sign Into App
