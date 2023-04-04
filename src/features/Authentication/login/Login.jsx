@@ -1,31 +1,8 @@
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
-
-const schema = yup.object().shape({
-  email: yup.string().email().required(),
-  password: yup.string().min(8).max(32).required(),
-});
-
 // login component
-function Login() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
-
-  const onSubmitHandler = (data) => {
-    console.log({ data });
-    reset();
-  };
-
+function Login(props) {
   return (
     <form
-      onSubmit={handleSubmit(onSubmitHandler)}
+      onSubmit={props.handleSubmit(onSubmitHandler)}
       className="grid content-center min-h-screen px-10 py-10 bg-orange-50 lg:grid justify-items-center"
     >
       <div className="container bg-white shadow-md rounded-2xl grid justify-items-center p-10 md:w-3/4  lg:max-w-xl ">
@@ -53,7 +30,7 @@ function Login() {
               required
               className="border border-slate-400 focus:ring focus:ring-orange-500 focus:outline-none rounded-lg px-5  lg: py-2"
             />
-            <p>{errors.password?.message}</p>
+            <p className="text-red-600">{props.errors.password?.message}</p>
           </div>
           <div className=" grid gap-y-5 mt-10 lg:mt-16 ">
             <button
