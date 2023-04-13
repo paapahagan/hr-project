@@ -2,7 +2,7 @@
 function LoginComponent(props) {
   return (
     <form
-      onSubmit={props.handleSubmit(onSubmitHandler)}
+      onSubmit={props.handleSubmit}
       className="grid content-center min-h-screen px-10 py-10 bg-orange-50 lg:grid justify-items-center"
     >
       <div className="container bg-white shadow-md rounded-2xl grid justify-items-center p-10 md:w-3/4  lg:max-w-xl ">
@@ -15,17 +15,17 @@ function LoginComponent(props) {
           <div className=" grid ">
             <label>Email</label>
             <input
-              {...register("email")}
+              {...props.register("email")}
               type="text"
               required
               className="border border-slate-400 focus:ring focus:ring-orange-500 focus:outline-none rounded-lg px-5 lg: py-2"
             />
-            <p>{errors.email?.message}</p>
+            <p>{props.errors.email?.message}</p>
           </div>
           <div className="grid mt-5 lg:mt-10 ">
             <label>Password</label>
             <input
-              {...register("password")}
+              {...props.register("password")}
               type="password"
               required
               className="border border-slate-400 focus:ring focus:ring-orange-500 focus:outline-none rounded-lg px-5  lg: py-2"
