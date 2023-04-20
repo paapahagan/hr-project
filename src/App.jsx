@@ -1,5 +1,9 @@
-import LoginContainer from "./features/authentication/login/login-container";
+import SignUpContainer from "./features/authentication/signup/signup-container";
 
-export default function App() {
-  return <LoginContainer />;
+export function App() {
+  return (
+    <div className="App">
+      <SignUpContainer />
+    </div>
+  );
 }
