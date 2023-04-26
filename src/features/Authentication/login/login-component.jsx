@@ -30,7 +30,10 @@ function LoginComponent(props) {
               required
               className="border border-slate-400 focus:ring focus:ring-orange-500 focus:outline-none rounded-lg px-5  lg: py-2"
             />
-            <p className="text-red-600">{props.errors.password?.message}</p>
+            <p className="text-red-600">
+              {props.errors.password?.message}
+              {props.errorMessage}
+            </p>
           </div>
           <div className=" grid gap-y-5 mt-10 lg:mt-16 ">
             <button

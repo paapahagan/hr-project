@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -26,15 +26,17 @@ function LoginContainer() {
       await login(data.email, data.password);
       reset();
     } catch (error) {
-      console.log(error);
+      setErrorMessage(error.message);
     }
   };
+  const [errorMessage, setErrorMessage] = useState("");
 
   return (
     <Login
       handleSubmit={handleSubmit(onSubmitHandler)}
       register={register}
       errors={errors}
+      errorMessage={errorMessage}
     />
   );
 }
