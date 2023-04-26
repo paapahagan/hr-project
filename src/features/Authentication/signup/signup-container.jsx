@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import SignUpComponent from "./signup-component";
+import { signup } from "../../../firebase_setup/firebase";
 
 const schema = yup.object().shape({
   email: yup.string().email().required(),
@@ -21,17 +22,22 @@ function SignUpContainer() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid, isSubmitting },
+    formState: { errors, isValid, isSubmitting, trigger },
     reset,
   } = useForm({
     mode: "all",
     resolver: yupResolver(schema),
   });
 
-  const onSubmitHandler = (data) => {
-    console.log({ data });
-    reset();
+  const onSubmitHandler = async (data) => {
+    try {
+      await signup(data.email, data.password);
+      reset();
+    } catch (error) {
+      setErrorMessage(error.message);
+    }
   };
+  const [errorMessage, setErrorMessage] = useState("");
 
   return (
     <div>
@@ -41,6 +47,8 @@ function SignUpContainer() {
         errors={errors}
         isValid={isValid}
         isSubmitting={isSubmitting}
+        trigger={trigger}
+        errorMessage={errorMessage}
       />
     </div>
   );
