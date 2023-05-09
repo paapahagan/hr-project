@@ -1,6 +1,9 @@
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 function SignUpComponent(props) {
+  const navigate = useNavigate();
+
   return (
     <div>
       <form
@@ -62,9 +65,9 @@ function SignUpComponent(props) {
             <div className=" mt-20 lg:mt-20 text-center">
               <p className="mt-5">
                 Don't have an OA account ?
-                <a href="" className="text-orange-600 font-bold ml-5">
+                <Link to="/login" className="text-orange-600 font-bold ml-5">
                   Login
-                </a>
+                </Link>
               </p>
             </div>
           </div>

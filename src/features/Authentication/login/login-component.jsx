@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 // login component
 function LoginComponent(props) {
   return (
@@ -47,9 +49,9 @@ function LoginComponent(props) {
           <div className="mt-5 lg:mt-10 text-center">
             <p>
               Don't have a ValueBell account ?
-              <a href="" className="text-orange-600 font-bold">
+              <Link className="text-orange-600 font-bold" to="/signup">
                 Sign up
-              </a>
+              </Link>
             </p>
           </div>
         </div>
