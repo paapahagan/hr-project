@@ -8,14 +8,14 @@ function Compose() {
         <div>
           <div className=" flex ">
             <div>
-              <img src="a.png" className="mr-2" />
+              <img src="/src/assets/icons/a.svg" className="mr-2" />
             </div>
             <div className=" grid content-center ml-2 mr-5">
               <p>Obsidian archernar</p>
               <p>Banking clients</p>
             </div>
             <button className=" grid content-center">
-              <img src="down.png" />
+              <img src="/src/assets/icons/down.svg" />
             </button>
           </div>
 
@@ -25,19 +25,19 @@ function Compose() {
               <p>APP</p>
             </div>
             <button className=" flex hover:border px-2 py-2">
-              <img src="arrow.png" className="mr-5" />
+              <img src="/src/assets/icons/comp.svg" className="mr-5" />
               <p>Compose</p>
             </button>
             <button className=" flex  hover:border px-2 py-2">
-              <img src="bell.png" className="mr-5" />
+              <img src="/src/assets/icons/bell.svg" className="mr-5" />
               <p>Sent Messages</p>
             </button>
             <button className=" flex  hover:border px-2 py-2">
-              <img src="user.png" className="mr-5" />
+              <img src="/src/assets/icons/user.svg" className="mr-5" />
               <p>Users</p>
             </button>
             <button className=" flex  hover:border px-2 py-2">
-              <img src="set.png" className="mr-5" />
+              <img src="/src/assets/icons/set.svg" className="mr-5" />
               <p>Settings</p>
             </button>
           </div>
@@ -49,11 +49,11 @@ function Compose() {
             <p>Other</p>
           </div>
           <button className=" flex  hover:border px-2 py-2">
-            <img src="contact.png" className="mr-5" />
+            <img src="/src/assets/icons/contact.svg" className="mr-5" />
             <p>Contact Support</p>
           </button>
           <button className=" flex  hover:border px-2 py-2">
-            <img src="roc.png" className="mr-5" />
+            <img src="/src/assets/icons/roc.svg" className="mr-5" />
             <a>oamarkets.com</a>
           </button>
         </div>
@@ -97,7 +97,7 @@ function Compose() {
         <div className=" flex justify-between bg-slate-900 px-4 py-4 rounded-xl">
           <div className="flex gap-x-5">
             <div>
-              <img src="load.png" />
+              <img src="/src/assets/icons/loading.svg" />
             </div>
             <div>
               <p className="  text-white grid content-center">
