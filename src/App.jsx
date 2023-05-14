@@ -1,13 +1,14 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginContainer from "./features/authentication/login/login-container";
 import SignUpContainer from "./features/authentication/signup/signup-container";
+import Compose from "./features/messages/compose-component";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: (
       <div>
-        <h1>Hello World</h1>
+        <Compose />
       </div>
     ),
   },
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
     path: "/signup",
     element: <SignUpContainer />,
   },
+  // {
+  //   path: "/compose",
+  //   element: <compose/>,
+  // },
 ]);
 
 export function App() {
