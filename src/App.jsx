@@ -2,13 +2,14 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginContainer from "./features/authentication/login/login-container";
 import SignUpContainer from "./features/authentication/signup/signup-container";
 import Compose from "./features/messages/compose-component";
+import Message from "./features/messages/message-component";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: (
       <div>
-        <Compose />
+        <Message />
       </div>
     ),
   },
